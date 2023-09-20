@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Animals collection</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        /* CSS from style.css */
+        body {
+            background-image: url('./img/indexBackground.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .custom-h1 {
+            font-size: 40px;
+            color: green;
+        }
+
+        /* Style for the displayed image */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .modal-content {
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+        }
+
+        /* Ensure the image covers the modal */
+        .modal-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain; /* Maintain aspect ratio and fit inside the container */
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4 custom-h1">Your animals collections</h1>
+
+        <div class="row">
+            <!-- Image 1 -->
+            <div class="col-md-4">
+                <div class="card">
+                    <a href="javascript:void(0);" onclick="openImageViewer('./img/Opossum.png');">
+                        <img src="./img/Opossum.png" class="card-img-top" alt="Opossum">
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title">L'opossum, originario delle Americhe, è un marsupiale notturno noto per la sua coda prensile e abitudini onnivore.</h5>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Image 2 -->
+            <div class="col-md-4">
+                <div class="card">
+                    <a href="javascript:void(0);" onclick="openImageViewer('./img/Suricate.png');">
+                        <img src="./img/Suricate.png" class="card-img-top" alt="Suricate">
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title">Il suricata, una mangusta africana, è noto per il suo comportamento sentinella.</h5>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 3 -->
+            <div class="col-md-4">
+                <div class="card">
+                    <a href="javascript:void(0);" onclick="openImageViewer('./img/Panda.png');">
+                        <img src="./img/Panda.png" class="card-img-top" alt="Panda">
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title">Il panda gigante è un'iconica specie di orso originaria della Cina.</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Image Viewer -->
+    <div id="imageViewerModal" class="modal" onclick="closeImageViewer()">
+        <span class="close" onclick="closeImageViewer()">&times;</span>
+        <div class="modal-content">
+            <img id="displayed-image" src="" alt="Image" class="modal-image">
+        </div>
+    </div>
+
+    <script>
+        function openImageViewer(imagePath) {
+            var modal = document.getElementById('imageViewerModal');
+            var modalImg = document.getElementById('displayed-image');
+            modal.style.display = 'block';
+            modalImg.src = imagePath;
+        }
+
+        function closeImageViewer() {
+            var modal = document.getElementById('imageViewerModal');
+            modal.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
